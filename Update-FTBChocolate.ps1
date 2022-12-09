@@ -62,7 +62,7 @@ Write-Host "(5/6) Downloaded Iron Chests" -ForegroundColor Yellow
 
 # FTB Ultimine
 # Install 1802.3.3
-Invoke-WebRequest -Uri "https://github.com/chazza6464/Modpacks/blob/main/Mod%20Files/ftb-ultimine-forge-1802.3.3-build.67.jar" -OutFile "$global:InstancePath\Mods\ftb-ultimine-forge-1802.3.3-build.67.jar"
+Invoke-WebRequest -Uri "https://github.com/chazza6464/Modpacks/raw/main/Mod%20Files/ftb-ultimine-forge-1802.3.3-build.67.jar" -OutFile "$global:InstancePath\Mods\ftb-ultimine-forge-1802.3.3-build.67.jar"
 Write-Host "(6/6) Downloaded FTB Ultimine" -ForegroundColor Yellow
 
 Write-Host "All mods have been updated or installed. Test out the pack!" -ForegroundColor Green
