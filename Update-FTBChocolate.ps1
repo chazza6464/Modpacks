@@ -84,10 +84,13 @@ if (-not(Test-Path $env:USERPROFILE\Desktop)) {
 Write-Host "MultiMC has been extracted." -ForegroundColor Green
 
 Write-Host "`nTo add FTB Chocolate to MultiMC:" -ForegroundColor Cyan
-Write-Host "1: Open MultiMC and choose British English."
-Write-Host "2: Select the recommended Java version (the one with the star)."
-Write-Host "3: Choose to enable or disable analytics (up to you)."
-Write-Host "4: Click 'Add Instance in the top left corner, and select 'FTB App Import'."
-Write-Host "5: Choose FTB Chocolate from the menu on the right, and choose OK."
-Write-Host "6: Select FTB Chocolate and click Launch on the right hand side."
-Write-Host "7: Add your Microsoft account that you use to play Minecraft."
+Write-Host "01: Open MultiMC and choose British English."
+Write-Host "02: Select the recommended Java version (the one with the star)."
+Write-Host "03: If no Java versions are found, you'll need to install it yourself."
+Write-Host "04: Choose to enable or disable analytics (up to you)."
+Write-Host "05: Click 'Add Instance in the top left corner, and select 'FTB App Import'."
+Write-Host "06: Choose FTB Chocolate from the menu on the right, and choose OK."
+Write-Host "07: Select FTB Chocolate and click Edit Instance on the right hand side."
+Write-Host "08: Click 'Install Forge' and choose version 40.1.86 (at the top of the list)."
+Write-Host "09: Add your Microsoft account that you use to play Minecraft."
+Write-Host "10: Launch FTB Chocolate!"
