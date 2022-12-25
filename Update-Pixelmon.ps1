@@ -11,7 +11,7 @@ if (Test-Path "$env:USERPROFILE\Desktop\MultiMC\Instances") {
     $Folders = Get-ChildItem -Path "$env:USERPROFILE\Desktop\MultiMC\Instances" -Directory
     foreach ($Folder in $Folders) {
         if (Get-Content -Path "$env:USERPROFILE\Desktop\MultiMC\Instances\$($Folder.Name)" -like "*Pixelmon*") {
-            $InstancePath = "$env:USERPROFILE\Desktop\MultiMC\Instances\$($Folder.Name)"
+            $InstancePath = "$env:USERPROFILE\Desktop\MultiMC\Instances\$($Folder.Name)\minecraft"
             Write-Host "Found existing Pixelmon instance!" -ForegroundColor Green
             break
         }
