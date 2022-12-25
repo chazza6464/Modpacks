@@ -17,8 +17,20 @@ if (Test-Path "$env:USERPROFILE\Desktop\MultiMC\Instances") {
         }
     }
 } else {
-    $InstancePath = Get-MultiMC
     Write-Host "Could not find MultiMC or Pixelmon in the standard location." -ForegroundColor Yellow
+    $Picker = New-Object System.Windows.Forms.FolderBrowserDialog
+    $Picker.Description = "Select the MultiMC folder"
+    $Picker.InitialDirectory = "$env:USERPROFILE\Desktop"
+    $Picker.TopMost = $true
+    
+    if ($Picker.ShowDialog() -eq "OK") {
+        $InstancePath = $Picker.SelectedPath
+    } else {
+        Write-Host "Couldn't load the folder picker dialog." -ForegroundColor Red
+        Write-Host "Please find the instance folder path and paste the file path below:"
+        $InstancePath = Read-Host "Instance Folder Path"
+    }
+    
 }
 
 # Stage Two - Install mods
