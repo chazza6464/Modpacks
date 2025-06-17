@@ -38,6 +38,7 @@ Write-Host "[02] Creating mods folder..." -ForegroundColor Cyan
 Start-Sleep -Seconds 1
 if (Test-Path -Path "$StardewRoot\Mods") {
     Write-Host "Success! You already have a Mods folder." -ForegroundColor Green
+    $ModsFolder = "$StardewRoot\Mods"
 }
 else {
     try {
