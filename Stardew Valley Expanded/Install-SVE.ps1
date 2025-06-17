@@ -104,7 +104,8 @@ Write-Host "------------------"
 Write-Host "'What do you want to do?'"
 Write-Host "-> Choose: [1] Install SMAPI" -ForegroundColor Green
 Write-Host "------------------"
-Write-Host "Press Enter to continue once this is done."
+Write-Host "Then press Enter on the other window." -ForegroundColor Green
+Write-Host "Press Enter back here once you're done."
 Read-Host
 
 
