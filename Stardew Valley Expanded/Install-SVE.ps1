@@ -17,7 +17,7 @@ Start-Sleep -Seconds 2
 Write-Host "[01] Finding your Stardew Valley game folder..." -ForegroundColor Cyan
 Start-Sleep -Seconds 1
 $StardewRoot = "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley"
-if ($StardewRoot.Count -gt 0) {
+if (Test-Path -Path $StardewRoot) {
     Write-Host "Success! Found your Stardew Valley game at: " -ForegroundColor Green -NoNewline
     Write-Host "$StardewRoot" -ForegroundColor Yellow
     Start-Sleep -Seconds 2
