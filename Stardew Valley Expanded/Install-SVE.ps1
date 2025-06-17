@@ -25,6 +25,7 @@ if (Test-Path -Path $StardewRoot) {
 else {
     Write-Host "[ERROR] " -ForegroundColor Red -NoNewline
     Write-Host "Could not find your Stardew Valley game. Speak to Zach for troubleshooting. :)"
+    Write-Host $_.Exception.Message
     Write-Host "Press Enter to exit."
     Read-Host
     exit
@@ -47,6 +48,7 @@ else {
     catch {
         Write-Host "[ERROR] " -ForegroundColor Red -NoNewline
         Write-Host "Could not create your Mods folder. Speak to Zach for troubleshooting. :)"
+        Write-Host $_.Exception.Message
         Write-Host "Press Enter to exit."
         Read-Host
         exit
