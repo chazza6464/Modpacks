@@ -16,9 +16,7 @@ Start-Sleep -Seconds 2
 # Find Stardew Valley install location
 Write-Host "[01] Finding your Stardew Valley game folder..." -ForegroundColor Cyan
 Start-Sleep -Seconds 1
-$StardewRoot = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" |
-                Where-Object { $_.DisplayName -like "Stardew Valley" } |
-                Select-Object -ExpandProperty InstallLocation
+$StardewRoot = "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley"
 if ($StardewRoot.Count -gt 0) {
     Write-Host "Success! Found your Stardew Valley game at: " -ForegroundColor Green -NoNewline
     Write-Host "$StardewRoot" -ForegroundColor Yellow
