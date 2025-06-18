@@ -38,7 +38,7 @@ Write-Host "[02] Creating mods folder..." -ForegroundColor Cyan
 Start-Sleep -Seconds 1
 if (Test-Path -Path "$StardewRoot\Mods") {
     Write-Host "Success! You already have a Mods folder." -ForegroundColor Green
-    $ModsFolder = "$StardewRoot\Mods"
+    $ModsFolder = Get-Item -Path "$StardewRoot\Mods"
 }
 else {
     try {
@@ -55,6 +55,8 @@ else {
         exit
     }
 }
+# Empty out the existing Mods folder
+Get-ChildItem -Path $ModsFolder -Recurse -Force | Remove-Item -Force -Recurse
 
 
 
@@ -99,6 +101,9 @@ Start-Sleep -Seconds 3
 $Installer = "$ModsFolder\SMAPI 4.2.1 installer\internal\windows\SMAPI.Installer.exe"
 Start-Process -FilePath $Installer
 
+Write-Host ""
+Write-Host ""
+Write-Host "------------------"
 Write-Host "'Where do you want to add or remove SMAPI?'" -ForegroundColor Cyan
 Write-Host "-> Choose: [1] $StardewRoot" -ForegroundColor Green
 Write-Host "------------------"
@@ -135,9 +140,9 @@ Write-Host "| Installing Stardew Valley Expanded |" -ForegroundColor Yellow
 Write-Host "+------------------------------------+" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "----|   INSTALLATION COMPLETED   |----" -ForegroundColor Green
-Start-Sleep -Seconds 5
+Start-Sleep -Seconds 1
 Write-Host "You should now be able to launch Stardew Valley with mods and achievements enabled!" -ForegroundColor Green
-Start-Sleep -Seconds 5
+Start-Sleep -Seconds 2
 Write-Host "Press Enter to close this window."
 Read-Host
 exit
