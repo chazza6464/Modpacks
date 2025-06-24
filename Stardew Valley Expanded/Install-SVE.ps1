@@ -34,6 +34,8 @@ else {
 
 
 # Create mods folder
+Write-Host ""
+Write-Host ""
 Write-Host "[02] Creating mods folder..." -ForegroundColor Cyan
 Start-Sleep -Seconds 1
 if (Test-Path -Path "$StardewRoot\Mods") {
@@ -56,11 +58,13 @@ else {
     }
 }
 # Empty out the existing Mods folder
-Get-ChildItem -Path $ModsFolder -Recurse -Force | Remove-Item -Force -Recurse
+Remove-Item -Path "$ModsFolder\*" -Force -Recurse
 
 
 
 # Download mod files
+Write-Host ""
+Write-Host ""
 Write-Host "[03] Downloading mod files..." -ForegroundColor Cyan
 Start-Sleep -Seconds 1
 $RequiredMods = @(
@@ -70,17 +74,20 @@ $RequiredMods = @(
     "Grampleton Fields"
     "SMAPI"
     "Stardew Valley Expanded"
+    "Pause In Multiplayer"
 )
 Write-Host "There are $($RequiredMods.Count) mods to download."
 $RequiredMods | ForEach-Object {
-    $ModName = "$($_ -replace " ", "%20").zip"
-    $URL = "$RepositoryUrl/$ModName"
+    $ModName = "$($_ -replace " ", "%20")"
+    $URL = "$RepositoryUrl/$ModName.zip"
     Start-Sleep -Seconds 1
 
     Write-Host "-> Downloading $_..."
-    Invoke-WebRequest -Uri $URL -OutFile "$env:TEMP\$ModName"
-    Expand-Archive -Path "$env:TEMP\$ModName" -DestinationPath $ModsFolder -Force
-    Remove-Item -Path "$env:TEMP\$ModName" -Force
+    Invoke-WebRequest -Uri $URL -OutFile "$env:TEMP\$ModName.zip"
+    Expand-Archive -Path "$env:TEMP\$ModName.zip" -DestinationPath "$env:TEMP\$ModName" -Force
+    if (-not (Test-Path -Path "$ModsFolder\$_")) { New-Item -Path "$ModsFolder\$_" -ItemType Directory -Force -Confirm:$false | Out-Null }
+    Move-Item -Path "$env:TEMP\$ModName\*" -Destination "$ModsFolder\$_" -Force -Confirm:$false | Out-Null
+    Remove-Item -Path "$env:TEMP\$ModName.zip" -Force
 }
 Write-Host "Success! All mod files have been downloaded." -ForegroundColor Green
 Start-Sleep -Seconds 2
@@ -88,14 +95,17 @@ Start-Sleep -Seconds 2
 
 
 # Install SMAPI
+Write-Host ""
+Write-Host ""
 Write-Host "[04] Installing the Stardew Modding API (SMAPI)..." -ForegroundColor Cyan
 Start-Sleep -Seconds 1
 Write-Host "NOTE: There's some interaction from you here. " -ForegroundColor Yellow -NoNewline
 Write-Host "Don't worry, I'll guide you through! :)" -ForegroundColor Green
 Start-Sleep -Seconds 3
 
+Write-Host ""
 Write-Host "A second window will open and will guide you through installing this step." -ForegroundColor Cyan
-Write-Host "Check this window to see which options you should choose." -ForegroundColor Green
+Write-Host "Check back on this window to see which options you should choose." -ForegroundColor Green
 Start-Sleep -Seconds 3
 
 $Installer = "$ModsFolder\SMAPI 4.2.1 installer\internal\windows\SMAPI.Installer.exe"
