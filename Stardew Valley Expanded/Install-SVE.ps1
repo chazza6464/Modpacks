@@ -108,7 +108,7 @@ Write-Host "A second window will open and will guide you through installing this
 Write-Host "Check back on this window to see which options you should choose." -ForegroundColor Green
 Start-Sleep -Seconds 3
 
-$Installer = "$ModsFolder\SMAPI 4.2.1 installer\internal\windows\SMAPI.Installer.exe"
+$Installer = "$ModsFolder\SMAPI\SMAPI 4.2.1 installer\internal\windows\SMAPI.Installer.exe"
 Start-Process -FilePath $Installer
 
 Write-Host ""
